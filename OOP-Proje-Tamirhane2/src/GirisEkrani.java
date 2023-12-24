@@ -1,4 +1,5 @@
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GirisEkrani {
@@ -24,10 +25,6 @@ public class GirisEkrani {
         GirisEkrani.kullaniciSifre = kullaniciSifre;
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public boolean caseSensitiveKontrol(){
-
-        return true;
-    }
     public boolean caseInsensitiveKontrol(){
 
         return true;
@@ -38,12 +35,14 @@ public class GirisEkrani {
         System.out.println("Sisteme hoş geldiniz :)");
 
         do  {
+
             System.out.println("Kullanıcı ismini girniz: ");
             kullaniciAdi = scan.nextLine();
             setKullaniciAdi(kullaniciAdi);
             System.out.println("Şifre: ");
             kullaniciSifre = scan.nextLine();
             setKullaniciSifre(kullaniciSifre);
+
         }while (girisKontrol());
         //giral fonk içine kes yapıstır
         /* do {
@@ -56,19 +55,19 @@ public class GirisEkrani {
         }  while(sehirKontrol());
         */
     }
-    protected boolean girisKontrol(){ //Admin sistemi eklenecek
 
+    protected boolean girisKontrol(){ //Admin sistemi eklenecek
         Ustalar u = new Ustalar();
         u.ustaAdlariOlustur();
         u.ustaSifreleriOlustur();
 
-        if((getKullaniciAdi().length() >= 3 && u.kullaniciAdiUstaAdiKontrol()) && (getKullaniciSifre().length() == 4 && u.kullaniciSifreUstaSifresiKontrol()) ){
+        if((getKullaniciAdi().length() >= 3 && u.kullaniciAdiUstaAdiKontrol(getKullaniciAdi())) && (getKullaniciSifre().length() == 4 && u.kullaniciSifreUstaSifresiKontrol(getKullaniciSifre())) ){
             return false;
         }
         else {
-            setKullaniciAdi(null);
-            setKullaniciSifre(null);
+            System.out.println("Kullanıcı adı veya şifre hatalı");
             return true;
         }
     }
+
 }
