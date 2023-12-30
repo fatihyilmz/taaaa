@@ -128,22 +128,22 @@ public class Ustalar extends Subeler implements UstaBilgileri {
     }
 
 
-    public boolean kullaniciAdiUstaAdiKontrol() { //Kullanıcının girdiği kullanıcı adı ile sisteme girili ustaların adını karşılaştıran metod
-        // Sorun burada.
+    public boolean kullaniciAdiUstaAdiKontrol(String kullaniciAdi) { //Kullanıcının girdiği kullanıcı adı ile sisteme girili ustaların adını karşılaştıran metod
+        // Sorun cozuldu
         for (int i = 0; i <= 14 + artirici; i++) {
             String geciciAd = ustaAdlari.get(i);
-            if (Objects.equals(geciciAd, getKullaniciAdi())) {
+            if (Objects.equals(geciciAd, kullaniciAdi)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean kullaniciSifreUstaSifresiKontrol() { //Kullanıcının girdiği kullanıcı adı ile sisteme girili ustaların adını karşılaştıran metod
+    public boolean kullaniciSifreUstaSifresiKontrol(String kullaniciSifre) { //Kullanıcının girdiği kullanıcı adı ile sisteme girili ustaların adını karşılaştıran metod
 
         for (int i = 0; i <= 14 + artirici; i++) {
             String geciciSifre = ustaSifreleri.get(i);
-            if (Objects.equals(geciciSifre, getKullaniciSifre())) {
+            if (Objects.equals(geciciSifre, kullaniciSifre )) {
                 return true;
             }
         }
